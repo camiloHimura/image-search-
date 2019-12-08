@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+  --Archetika-1-hex: #1E2436;
+  --Archetika-2-hex: #FAFAFA;
+  --Archetika-3-hex: #38B5BA;
+  --Archetika-4-hex: #00A5AD;
+  --Archetika-5-hex: #00747A;
+
+  --white: var(--Archetika-2-hex);
+  --text-color: var(--Archetika-1-hex);
+  --link-color: var(--Archetika-4-hex);
+  --braground-color: var(--Archetika-5-hex);
+  --link-color-hover: var(--Archetika-3-hex);
+  --braground-color-hover: var(--Archetika-3-hex);
+
+  --text-size: 14px;
+  --title-size: 16px;
+
+  --container-width: 80%;
+}
+
+body{
+  margin: 0px;
+  padding: 0px;
+  font-size: var(--text-size);
+}
+
+.--pointer{
+  cursor: pointer;
+}
+
+.--flex{
+  display: flex;
+}
+
+.--alignCenter{
+  align-items: center;
+}
+
+.--clear-button{
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.container{
+  margin: 0 auto;
+  display: block;
+  width: var(--container-width);
+}

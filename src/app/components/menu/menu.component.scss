@@ -1,0 +1,14 @@
+.contMenu{
+  height: 40px;
+  background: var(--braground-color);
+}
+
+button{
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.active{
+  background: var(--white);
+}
