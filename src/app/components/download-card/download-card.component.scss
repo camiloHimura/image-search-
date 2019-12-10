@@ -1,0 +1,6 @@
+:host{
+  margin: 10px;
+  height: 100%;
+  //20px margin
+  width: calc(100% / var(--cards-per-line) - 20px);
+}

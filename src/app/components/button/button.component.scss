@@ -1,0 +1,12 @@
+button{
+  border: none;
+  height: 100%;
+  outline: none;
+  padding: 4px 10px;
+  color: var(--white);
+  background: var(--background-button);
+
+  /* &:hover{
+    background: var(--background-button-hover);
+  } */
+}

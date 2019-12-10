@@ -1,0 +1,30 @@
+:host {
+  margin: 10px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  //20px margin
+  width: calc(100% / var(--cards-per-line) - 20px);
+
+  &:hover .options{
+    transform: translateY(0);
+  }
+}
+
+.options{
+  bottom: 0px;
+  width: 100%;
+  padding: 4px 10px;
+  position: absolute;
+  transition: all .4s;
+  box-sizing: border-box;
+  background: var(--white);
+  transform: translateY(100%);
+  border-bottom: 1px solid var(--border-color);
+
+  a{
+    text-decoration: none;
+    color: var(--link-color);
+  }
+}

@@ -1,14 +1,22 @@
+.container{
+  height: 100%;
+}
+
 .contMenu{
+  height: 100%;
   height: 40px;
-  background: var(--braground-color);
+  background: var(--white);
 }
 
 button{
-  height: 20px;
+  width: 100px;
+  height: 100%;
   cursor: pointer;
-  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: var(--title-size);
 }
 
 .active{
-  background: var(--white);
+  border-bottom: 2px solid var(--border-color);
+  background-color: var(--menu-active-color);
 }

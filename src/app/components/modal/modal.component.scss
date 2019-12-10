@@ -1,0 +1,31 @@
+:host{
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-modal);
+  background: var(--background-modal-color);
+}
+
+.--show{
+
+}
+
+.contModal{
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: var(--white);
+  width: var(--content-modal-width);
+}
+
+.contTitle{
+  margin-bottom: 10px;
+  padding: 0px  10px 10px;
+  font-size: var(--title-size);
+  border-bottom: 1px solid var(--border-color);
+}
