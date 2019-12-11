@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { ModalNewFavoriteComponent } from './components/modal-new-favorite/modal
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

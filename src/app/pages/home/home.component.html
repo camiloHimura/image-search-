@@ -2,12 +2,13 @@
   <app-search-bar></app-search-bar>
 
   <div class="containerImgCards --flex --wrap">
-    <app-img-card></app-img-card>
-    <app-img-card></app-img-card>
-    <app-img-card></app-img-card>
-    <app-img-card></app-img-card>
-    <app-img-card></app-img-card>
-  </div>
+    <ng-container *ngIf="images.length; else elseTemplate">
+      <app-img-card *ngFor="let image of images" [image]="image"></app-img-card>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+        There are no images yet
+    </ng-template>
 
   <!-- <app-modal-favorites-list></app-modal-favorites-list> -->
   <!-- <app-modal-new-favorite></app-modal-new-favorite> -->
