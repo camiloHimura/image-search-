@@ -1,6 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,12 @@ import { ModalComponent } from './components/modal/modal.component';
 import { InputRadioComponent } from './components/input-radio/input-radio.component';
 import { ModalFavoritesListComponent } from './components/modal-favorites-list/modal-favorites-list.component';
 import { ModalNewFavoriteComponent } from './components/modal-new-favorite/modal-new-favorite.component';
+import { BalanceComponent } from './pages/balance/balance.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
+
+import { imagesReducer } from './store/reducers/Images.reducer';
+import { ImagesEffects } from './store/effects/images.effect';
+
 
 @NgModule({
   declarations: [
@@ -33,12 +41,16 @@ import { ModalNewFavoriteComponent } from './components/modal-new-favorite/modal
     ModalComponent,
     InputRadioComponent,
     ModalFavoritesListComponent,
-    ModalNewFavoriteComponent
+    ModalNewFavoriteComponent,
+    BalanceComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EffectsModule.forRoot([ImagesEffects]),
+    StoreModule.forRoot({ imagesState: imagesReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

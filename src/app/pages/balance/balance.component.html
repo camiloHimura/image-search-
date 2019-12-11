@@ -1,0 +1,19 @@
+<code>
+<!--   function getBalanceByCategoryInPeriod (transactions = [], category, start, end) {
+    // add your code here
+    let isDateInRange = (time) =>  {
+      time = new Date(time);
+      return time >= start && time < end
+    };
+
+    let isSameCategory = (name) => name.toLowerCase() === category.toLowerCase();
+
+    return transactions
+            .reduce((accum, current) =>{
+              if(isSameCategory(current.category) && isDateInRange(current.time)){
+                accum += current.amount;
+              }
+              return accum;
+            }, 0)
+  } -->
+</code>
