@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -6,12 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Input('show') show = false;
-  @Input('title') title: string;
+  @Input() show = false;
+  @Input() title: string;
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitClose(){
+    this.closeModal.emit();
   }
 
 }

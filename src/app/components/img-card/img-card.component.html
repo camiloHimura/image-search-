@@ -12,6 +12,6 @@
       <p class="link">{{image.author.name}}</p>
     </ng-template>
 
-    <app-button text="Add Favorites"></app-button>
+    <app-button (btnClick)="emitCardInfo(image)" text="Add Favorites"></app-button>
   </div>
 </div>

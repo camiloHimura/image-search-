@@ -2,8 +2,16 @@ h2{
   margin-bottom: 10px;
 }
 
-app-button{
-  width: 46px;
-  display: block;
+.listContainer{
+  overflow: auto;
+  max-height: 200px;
+}
+
+.options{
+  display: flex;
+}
+
+app-button:first-child{
   margin-left: auto;
+  margin-right: 10px;
 }

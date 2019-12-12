@@ -3,6 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { TransactionComponent } from './pages/transaction/transaction.component'
 
 import { imagesReducer } from './store/reducers/Images.reducer';
 import { ImagesEffects } from './store/effects/images.effect';
+import { modalsReducer } from './store/reducers/Modals.reducer';
+import { favoritesReducer } from './store/reducers/Favorites.reducer';
 
 
 @NgModule({
@@ -46,11 +49,15 @@ import { ImagesEffects } from './store/effects/images.effect';
     TransactionComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     EffectsModule.forRoot([ImagesEffects]),
-    StoreModule.forRoot({ imagesState: imagesReducer })
+    StoreModule.forRoot({ images: imagesReducer,
+                          modals: modalsReducer,
+                          favorites: favoritesReducer
+                        })
   ],
   providers: [],
   bootstrap: [AppComponent]

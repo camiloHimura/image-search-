@@ -6,7 +6,7 @@ export const initialState = {images: [], loading: false};
 
 const reducer = createReducer(initialState,
   on(ImagesActions.load, (state: ImagesState, { payload })  => {
-    return { ...state };
+    return { ...state, loading: true};
   }),
   on(ImagesActions.loaded, (state: ImagesState, { payload })  => {
     return { ...state, images: payload, loading: false};

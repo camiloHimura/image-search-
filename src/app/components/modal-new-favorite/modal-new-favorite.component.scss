@@ -11,6 +11,10 @@ input{
   outline: none;
 }
 
+input.ng-invalid:not(.ng-pristine){
+  border: 1px solid var(--warning-color);
+}
+
 app-button{
   width: 46px;
   display: block;

@@ -3,13 +3,13 @@
 
   <div class="containerImgCards --flex --wrap">
     <ng-container *ngIf="images.length; else elseTemplate">
-      <app-img-card *ngFor="let image of images" [image]="image"></app-img-card>
+      <app-img-card *ngFor="let image of images" [image]="image" (imageEmitter)="saveFavorite($event)"></app-img-card>
     </ng-container>
 
     <ng-template #elseTemplate>
         There are no images yet
     </ng-template>
 
-  <!-- <app-modal-favorites-list></app-modal-favorites-list> -->
-  <!-- <app-modal-new-favorite></app-modal-new-favorite> -->
+  <app-modal-favorites-list *ngIf="showFavoriteList"></app-modal-favorites-list>
+  <app-modal-new-favorite *ngIf="showNewFavorite"></app-modal-new-favorite>
 </div>

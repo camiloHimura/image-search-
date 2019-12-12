@@ -1,8 +1,11 @@
-<app-modal title="Favorites List">
-  <div> <input type="radio" name="list"> options</div>
-  <div> <input type="radio" name="list"> options</div>
-  <div> <input type="radio" name="list"> options</div>
-  <div> <input type="radio" name="list"> options</div>
+<app-modal title="Favorites List" (closeModal)="closeModal()">
 
-  <app-button text="Save"></app-button>
+  <div class="listContainer">
+    <div *ngFor="let favorite of favorites"> <input type="radio" name="list" [value]="favorite[0]"> {{ favorite[0] }}</div>
+  </div>
+
+  <div class="options">
+    <app-button text="New Item" (click)="newItemList()"></app-button>
+    <app-button type="submit" text="Save"></app-button>
+  </div>
 </app-modal>

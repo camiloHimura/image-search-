@@ -17,6 +17,7 @@
 
 .contModal{
   padding: 20px;
+  position: relative;
   border-radius: 10px;
   box-sizing: border-box;
   background-color: var(--white);
@@ -28,4 +29,10 @@
   padding: 0px  10px 10px;
   font-size: var(--title-size);
   border-bottom: 1px solid var(--border-color);
+}
+
+app-button{
+  top: 10px;
+  right: 10px;
+  position: absolute;
 }

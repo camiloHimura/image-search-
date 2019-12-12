@@ -2,13 +2,12 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { fromEvent, Observable } from 'rxjs';
 import * as ImagesActions from '../../store/actions/Images.actions';
-
-import { UnsplashApiService } from 'src/app/services/unsplash-api.service';
+import * as ModalActions from '../../store/actions/Modals.actions';
 
 import { Image } from 'src/app/models/image';
 import { SearchBarComponent } from 'src/app/components/search-bar/search-bar.component';
 import { filter, debounceTime, distinctUntilChanged, tap, map, switchMap } from 'rxjs/operators';
-import { ImagesState } from 'src/app/models/images.state';
+import { ModalState } from 'src/app/models/modal.state';
 
 @Component({
   selector: 'app-home',
@@ -19,21 +18,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('searchBar', {static: false}) searchBar: SearchBarComponent;
 
   images: Image[];
+  favorites = {};
+  numFavorites = 0;
   loadingImages = true;
-  imagesState$: Observable<Image[]>;
+  showNewFavorite = false;
+  showFavoriteList = false;
+  favoritesStore$: Observable<{}>;
+  imagesStore$: Observable<Image[]>;
+  modalsStore$: Observable<ModalState>;
 
-  constructor(private store: Store<any>,
-              private unsplashApiService: UnsplashApiService
-  ) {
-    this.imagesState$ = store.pipe(select('imagesState'));
+  constructor(private store: Store<any>) {
+    this.imagesStore$ = store.pipe(select('images'));
+    this.modalsStore$ = store.pipe(select('modals'));
+    this.favoritesStore$ = store.pipe(select('favorites'));
   }
 
   ngOnInit() {
-    this.imagesState$.subscribe((info: any) => {
-                        this.images = info.images;
-                        this.loadingImages = info.loading;
-                      });
-
+    this.listenImages();
+    this.listenModals();
+    this.listenfavorites();
     this.store.dispatch(ImagesActions.load({ payload: 'all'}));
   }
 
@@ -46,9 +49,38 @@ export class HomeComponent implements OnInit, AfterViewInit {
           map((event: any) => event.target.value === '' ? 'all' : event.target.value),
           tap(text => this.store.dispatch(ImagesActions.load({ payload: text})))
       )
-      .subscribe(info => this.images = info.results);
+      .subscribe();
   }
 
+  listenImages() {
+    this.imagesStore$.subscribe((info: any) => {
+        this.images = info.images;
+        this.loadingImages = info.loading;
+      });
+  }
 
+  listenModals() {
+    this.modalsStore$.subscribe((info: ModalState) => {
+        this.showNewFavorite = info.showNewFavorite;
+        this.showFavoriteList = info.showFavoriteList;
+      });
+  }
+
+  listenfavorites() {
+    this.favoritesStore$.subscribe((info) => {
+        console.log('info favorites', info);
+        this.favorites = info;
+        this.numFavorites = Object.keys(info).length;
+      });
+  }
+
+  saveFavorite(image: Image) {
+    console.log('saveFavorite', image);
+    if (this.numFavorites > 0) {
+      this.store.dispatch(ModalActions.toggleFavoritesList({payload: true}));
+    } else {
+      this.store.dispatch(ModalActions.toggleNewFavorite({payload: true}));
+    }
+  }
 
 }
