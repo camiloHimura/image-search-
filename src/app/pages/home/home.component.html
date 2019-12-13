@@ -10,6 +10,6 @@
         There are no images yet
     </ng-template>
 
-  <app-modal-favorites-list *ngIf="showFavoriteList"></app-modal-favorites-list>
-  <app-modal-new-favorite *ngIf="showNewFavorite"></app-modal-new-favorite>
+    <app-modal-new-favorite *ngIf="showNewFavorite"></app-modal-new-favorite>
+    <app-modal-favorites-list *ngIf="showFavoriteList" [selectedImage]="selectedImage"></app-modal-favorites-list>
 </div>

@@ -1,7 +1,10 @@
 import { createReducer, on, Action } from '@ngrx/store';
+
+import managerLS from '../../util/managerLS.util';
+import { LS_FAVORITES_KEY } from 'src/app/constans';
 import * as FavoriteActions from '../actions/Favorites.actions';
 
-export const initialState = {};
+export const initialState = {...managerLS.get(LS_FAVORITES_KEY)};
 
 const reducer = createReducer(initialState,
   on(FavoriteActions.createFavoriteItem, (state, { payload })  => {
@@ -12,11 +15,11 @@ const reducer = createReducer(initialState,
     return { ...state };
   }),
   on(FavoriteActions.addImageToFavorite, (state, { payload })  => {
-    const oldData = state[payload.name];
+    const oldData = state[payload.listName];
     if (oldData) {
       const newImages = [...oldData.images, payload.image];
       const newData = {...oldData, images: newImages};
-      return { ...state, [payload.name]: newData };
+      return { ...state, [payload.listName]: newData };
     }
 
     return { ...state };

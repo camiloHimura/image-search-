@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
+
+import { Image } from 'src/app/models/image';
 
 import { ModalState } from 'src/app/models/modal.state';
 import * as ModalActions from '../../store/actions/Modals.actions';
+import * as FavoritesActions from '../../store/actions/Favorites.actions';
+
 
 @Component({
   selector: 'app-modal-favorites-list',
@@ -14,6 +19,7 @@ export class ModalFavoritesListComponent implements OnInit {
   favorites = [];
   favoritesStore$: Observable<{}>;
   modalsStore$: Observable<ModalState>;
+  @Input() selectedImage: Image;
 
   constructor(private store: Store<any>) {
     this.modalsStore$ = store.pipe(select('modals'));
@@ -39,4 +45,11 @@ export class ModalFavoritesListComponent implements OnInit {
     this.store.dispatch(ModalActions.toggleFavoritesList({payload: false}));
   }
 
+  onSubmit(ngForm: NgForm) {
+    const image = this.selectedImage;
+    const listName = ngForm.value.list;
+    this.store.dispatch(FavoritesActions.addImageToFavorite({payload: {listName, image }}));
+
+    this.store.dispatch(ModalActions.toggleFavoritesList({payload: false}));
+  }
 }

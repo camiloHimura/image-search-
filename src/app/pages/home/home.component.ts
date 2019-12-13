@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   images: Image[];
   favorites = {};
   numFavorites = 0;
+  selectedImage: Image;
   loadingImages = true;
   showNewFavorite = false;
   showFavoriteList = false;
@@ -68,14 +69,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   listenfavorites() {
     this.favoritesStore$.subscribe((info) => {
-        console.log('info favorites', info);
         this.favorites = info;
         this.numFavorites = Object.keys(info).length;
       });
   }
 
   saveFavorite(image: Image) {
-    console.log('saveFavorite', image);
+    this.selectedImage = image;
     if (this.numFavorites > 0) {
       this.store.dispatch(ModalActions.toggleFavoritesList({payload: true}));
     } else {

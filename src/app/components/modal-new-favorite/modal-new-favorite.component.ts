@@ -30,8 +30,6 @@ export class ModalNewFavoriteComponent implements OnInit {
 
     if (ngForm.status === 'VALID') {
       console.log('Saving...', name.value, description.value);
-      console.log(name);
-      console.log(description);
       const data = {name: name.value, description: description.value, images: []};
       this.store.dispatch(FavoritesActions.createFavoriteItem({payload: data}));
       this.store.dispatch(ModalActions.toggleNewFavorite({payload: false}));

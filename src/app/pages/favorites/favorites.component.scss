@@ -6,13 +6,18 @@
 .containerList{
   padding: 20px;
   border-radius: 10px;
+  margin-bottom: 20px;
   background: var(--white);
   box-shadow: 0 2px 0 0 var(--border-color);
 }
 
 .contTitle{
-
   h2{
     margin-right: 20px;
   }
+}
+
+.description{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

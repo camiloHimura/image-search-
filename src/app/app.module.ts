@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +27,7 @@ import { imagesReducer } from './store/reducers/Images.reducer';
 import { ImagesEffects } from './store/effects/images.effect';
 import { modalsReducer } from './store/reducers/Modals.reducer';
 import { favoritesReducer } from './store/reducers/Favorites.reducer';
-
+import { metaReducers } from './store/metareducers';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,8 @@ import { favoritesReducer } from './store/reducers/Favorites.reducer';
     StoreModule.forRoot({ images: imagesReducer,
                           modals: modalsReducer,
                           favorites: favoritesReducer
-                        })
+                        },
+                        { metaReducers })
   ],
   providers: [],
   bootstrap: [AppComponent]
