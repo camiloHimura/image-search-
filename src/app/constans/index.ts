@@ -1,4 +1,8 @@
 export const IMAGES_PER_PAGE = '20';
+
+export const SAVE_FAVORITE = 'New';
+export const UPDATE_FAVORITE = 'Edit';
+
 export const LS_FAVORITES_KEY = 'favorites';
 export const UNSPLASH_URL = 'https://api.unsplash.com/search/photos/';
 export const IMAGES_ORIENTATION = 'landscape'; //landscape | portrait | squarish

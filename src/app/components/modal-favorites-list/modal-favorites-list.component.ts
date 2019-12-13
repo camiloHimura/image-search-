@@ -8,6 +8,7 @@ import { Image } from 'src/app/models/image';
 import { ModalState } from 'src/app/models/modal.state';
 import * as ModalActions from '../../store/actions/Modals.actions';
 import * as FavoritesActions from '../../store/actions/Favorites.actions';
+import { FavoriteListItem } from 'src/app/models/favoriteListItem';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class ModalFavoritesListComponent implements OnInit {
 
   listenfavorites() {
     this.favoritesStore$.subscribe((info) => {
-      this.favorites = Object.entries(info);
+      this.favorites = Object.entries(info).map(([id, data]: [string, FavoriteListItem]) => ({id, ...data}));
       });
   }
 

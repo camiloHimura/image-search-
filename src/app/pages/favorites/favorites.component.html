@@ -2,16 +2,20 @@
 
   <div class="containerList" *ngFor="let item of favorites">
     <div class="contTitle --flex --justify-content-between">
-      <h2>{{item[0]}}</h2>
-      <app-button text="Edit"></app-button>
+      <h2>{{item.name}}</h2>
+      <app-button text="Edit" (btnClick)="edit(item.id, item.name, item.description)"></app-button>
     </div>
-    <p class="description">{{ item[1].description }}</p>
+    <p class="description">{{ item.description }}</p>
     <div class="contImgs --flex --wrap">
-      <app-download-card  *ngFor="let image of item[1].images"
+      <app-download-card  *ngFor="let image of item.images"
         [url]="image.thumbUrl"
         [downloadUrl]="image.downloadUrl">
       </app-download-card>
     </div>
   </div>
 
+  <app-modal-new-favorite *ngIf="showNewFavorite"
+      [type]="updateFavorite"
+      [favoriteSelected]="favoriteSelected">
+  </app-modal-new-favorite>
 </div>

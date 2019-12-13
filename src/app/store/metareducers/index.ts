@@ -3,23 +3,24 @@ import { MetaReducer, ActionReducer } from '@ngrx/store';
 import managerLS from '../../util/managerLS.util';
 import * as FavoriteActions from '../actions/Favorites.actions';
 import { LS_FAVORITES_KEY } from 'src/app/constans';
+import { newFavorite, updateFavorite, addImageToFavorite } from 'src/app/util/favorites.util';
 
 export function saveLocalStorage(reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action: {type: string, payload: any}) {
 
     if (FavoriteActions.createFavoriteItem.type === action.type) {
-      const {name, description, images} = action.payload;
-      const newFavorites = Object.assign({}, state.favorites, {[name]: {description, images}});
-      managerLS.save(LS_FAVORITES_KEY, JSON.stringify(newFavorites));
+      const newData = JSON.stringify(newFavorite(state.favorites, action.payload))
+      managerLS.save(LS_FAVORITES_KEY, newData);
+    }
+
+    if (FavoriteActions.updatedFavoriteItem.type === action.type) {
+      const newData = JSON.stringify(updateFavorite(state.favorites, action.payload));
+      managerLS.save(LS_FAVORITES_KEY, newData);
     }
 
     if (FavoriteActions.addImageToFavorite.type === action.type) {
-      const oldData = state.favorites[action.payload.listName];
-      if (oldData) {
-        const newImages = [...oldData.images, action.payload.image];
-        const newData = {...oldData, images: newImages};
-        managerLS.save(LS_FAVORITES_KEY, JSON.stringify({ ...state.favorites, [action.payload.listName]: newData }));
-      }
+      const newData = JSON.stringify(addImageToFavorite(state.favorites, action.payload));
+      managerLS.save(LS_FAVORITES_KEY, newData);
     }
 
     return reducer(state, action);

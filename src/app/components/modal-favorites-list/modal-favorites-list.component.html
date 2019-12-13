@@ -3,8 +3,8 @@
   <form (ngSubmit)="onSubmit(favoliteList)" #favoliteList="ngForm">
     <div class="listContainer">
       <div *ngFor="let favorite of favorites;index as position">
-        <input [id]="position + 'list'" type="radio" name="list" [value]="favorite[0]" ngModel required #list="ngModel">
-        <label [for]="position + 'list'">{{ favorite[0] }}</label>
+        <input [id]="position + 'list'" type="radio" name="list" [value]="favorite.id" ngModel required #list="ngModel">
+        <label [for]="position + 'list'">{{ favorite.name }}</label>
       </div>
     </div>
 

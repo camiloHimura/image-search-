@@ -1,11 +1,11 @@
-<app-modal title="New Favorites" (closeModal)="closeModal()">
+<app-modal [title]="type + ' Favorite'" (closeModal)="closeModal()">
 
-  <form (ngSubmit)="onSubmit(newFavorite, nombre, description)" #newFavorite="ngForm">
+  <form (ngSubmit)="onSubmit(newFavorite)" #newFavorite="ngForm">
     <div class="--flex">
-      <h3>Name</h3> <input type="text" name="nombre" ngModel required #nombre="ngModel">
+      <h3>Name</h3> <input type="text" [(ngModel)]="item.name" id="name" name="name" required>
     </div>
     <div class="--flex">
-      <h3>Description</h3> <input type="text" name="description" ngModel required #description="ngModel">
+      <h3>Description</h3> <input type="text" [(ngModel)]="item.description" id="description" name="description" required>
     </div>
     <app-button *ngIf="newFavorite.form.valid" type="submit" text="Save"></app-button>
   </form>
