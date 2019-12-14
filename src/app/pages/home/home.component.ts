@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   loadingImages = true;
   showNewFavorite = false;
   showFavoriteList = false;
+  errorLoadingImages = false;
   favoritesStore$: Observable<{}>;
   imagesStore$: Observable<Image[]>;
   modalsStore$: Observable<ModalState>;
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.imagesStore$.subscribe((info: any) => {
         this.images = info.images;
         this.loadingImages = info.loading;
+        this.errorLoadingImages = info.error;
       });
   }
 

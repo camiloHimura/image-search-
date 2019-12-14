@@ -1,1 +1,8 @@
-<img [src]="url">
+<ng-container *ngIf="!errorLoading; else template">
+  <img [src]="url" (load)="loaded($event)" (error)="loadError($event)">
+</ng-container>
+
+<ng-template #template>
+  <div class="errorImage --flex --align-items-center --justify-content-center"></div>
+</ng-template>
+

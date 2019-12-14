@@ -7,6 +7,7 @@
   --Archetika-5-hex: #e2eff7;
   --Archetika-6-hex: #c7e2f3;
   --Archetika-7-hex: red;
+  --Archetika-8-hex: #ededed;
 
   --white: var(--Archetika-2-hex);
   --black: var(--Archetika-1-hex);
@@ -27,8 +28,9 @@
 
   --container-width: 80%;
 
-  --cards-per-line: 4;
+  --cards-per-line: 2;
 
+  --loading-image-color: var(--Archetika-8-hex);
   --z-index-modal: 99999;
   --content-modal-width: 400px;
   --background-modal-color: rgba(30, 36, 54, 0.5);
@@ -59,7 +61,7 @@ h2{
   display: flex;
 }
 
-.--alignCenter{
+.--align-center{
   align-items: center;
 }
 
@@ -79,6 +81,10 @@ h2{
   align-items: center;
 }
 
+.--justify-content-center{
+  justify-content: center;
+}
+
 .--clear-button{
   border: none;
   outline: none;
@@ -89,4 +95,29 @@ h2{
   margin: 0 auto;
   display: block;
   width: var(--container-width);
+}
+
+@media only screen and (max-width: 572px) {
+  :root{
+    --text-size: 12px;
+    --title-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 573px) and (max-width: 828px) {
+  :root{
+    --cards-per-line: 3;
+  }
+}
+
+@media only screen and (min-width: 829px) and (max-width: 1084px) {
+  :root{
+    --cards-per-line: 4;
+  }
+}
+
+@media only screen and (min-width: 1084px) {
+  :root{
+    --cards-per-line: 5;
+  }
 }

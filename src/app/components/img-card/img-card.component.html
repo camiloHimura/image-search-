@@ -5,10 +5,10 @@
   </div>
   <div class="options --flex --justify-content-between --align-items-center">
 
-    <ng-container *ngIf="image.author.link; else elseTemplate">
+    <ng-container *ngIf="image.author.link; else template">
       <a class="link" [href]="image.author.link" target="_blank">{{image.author.name}}</a>
     </ng-container>
-    <ng-template #elseTemplate>
+    <ng-template #template>
       <p class="link">{{image.author.name}}</p>
     </ng-template>
 

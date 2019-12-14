@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-thumbnail',
@@ -6,11 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./thumbnail.component.scss']
 })
 export class ThumbnailComponent implements OnInit {
-  @Input('url') url: string;
+  @Input() url: string;
+  errorLoading = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loaded(event) {
+  }
+
+  loadError(event) {
+    this.errorLoading = true;
   }
 
 }

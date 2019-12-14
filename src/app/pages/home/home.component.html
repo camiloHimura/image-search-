@@ -2,13 +2,20 @@
   <app-search-bar #searchBar></app-search-bar>
 
   <div class="containerImgCards --flex --wrap">
-    <ng-container *ngIf="images.length; else elseTemplate">
+
+
+    <ng-container *ngIf="images.length">
       <app-img-card *ngFor="let image of images" [image]="image" (imageEmitter)="saveFavorite($event)"></app-img-card>
     </ng-container>
 
-    <ng-template #elseTemplate>
-        There are no images yet
-    </ng-template>
+    <ng-container *ngIf="!images.length && !errorLoadingImages">
+        Loading...
+    </ng-container>
+
+    <ng-container *ngIf="errorLoadingImages">
+        We ran into a load content problem.
+        Please check your connection and try again.
+    </ng-container>
 
     <app-modal-new-favorite *ngIf="showNewFavorite"></app-modal-new-favorite>
     <app-modal-favorites-list *ngIf="showFavoriteList" [selectedImage]="selectedImage"></app-modal-favorites-list>

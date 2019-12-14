@@ -20,8 +20,6 @@ import { ModalComponent } from './components/modal/modal.component';
 import { InputRadioComponent } from './components/input-radio/input-radio.component';
 import { ModalFavoritesListComponent } from './components/modal-favorites-list/modal-favorites-list.component';
 import { ModalNewFavoriteComponent } from './components/modal-new-favorite/modal-new-favorite.component';
-import { BalanceComponent } from './pages/balance/balance.component';
-import { TransactionComponent } from './pages/transaction/transaction.component';
 
 import { imagesReducer } from './store/reducers/Images.reducer';
 import { ImagesEffects } from './store/effects/images.effect';
@@ -45,8 +43,6 @@ import { metaReducers } from './store/metareducers';
     InputRadioComponent,
     ModalFavoritesListComponent,
     ModalNewFavoriteComponent,
-    BalanceComponent,
-    TransactionComponent
   ],
   imports: [
     FormsModule,

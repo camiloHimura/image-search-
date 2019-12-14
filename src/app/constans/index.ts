@@ -1,4 +1,4 @@
-export const IMAGES_PER_PAGE = '20';
+export const IMAGES_PER_PAGE = '40';
 
 export const SAVE_FAVORITE = 'New';
 export const UPDATE_FAVORITE = 'Edit';
